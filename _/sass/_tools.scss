@@ -1,0 +1,73 @@
+// -------------------------------------
+//   Display
+// -------------------------------------
+
+.db {
+  display: block;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.dn {
+  display: none;
+}
+
+// -------------------------------------
+//   Margins
+// -------------------------------------
+
+// ----- Horizontal ----- //
+
+.mhc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nop{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+
+// -------------------------------------
+//   Positioning
+// -------------------------------------
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.poa {
+  position: absolute;
+}
+
+.pof {
+  position: fixed;
+}
+
+.por {
+  position: relative;
+}
+
+.pos {
+  position: static;
+}
+
+
+// -------------------------------------
+//   Text
+// -------------------------------------
+
+// ----- Alignment ----- //
+
+.tac {
+  text-align: center;
+}

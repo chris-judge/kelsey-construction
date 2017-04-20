@@ -1,0 +1,52 @@
+//
+// - Imports - //
+//
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700")
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed")
+
+
+//
+// - Type - //
+//
+$open_sans: 'Open Sans', sans-serif
+$roboto: 'Roboto Condensed', sans-serif
+
+
+
+//
+// - Colors - //
+//
+$orange: rgba(255,102,0,1)
+
+.txt-orange
+	color: $orange
+
+.txt-white
+	color: white
+
+
+.bg-orange
+	background-color: $orange
+.bg-white
+	background-color: white
+.bg-black
+	background-color: black
+
+
+//
+// - Transition - //
+//
+$x-short: all 0.5s cubic-bezier(0.19, 1, 0.22, 1)
+
+
+//
+// - Helpers - //
+//
+ 
+%clearfix // (to use, @extend %clearfix)
+	zoom: 1
+	&:before, &:after
+		content: ""
+		display: table 
+	&:after
+		clear: both

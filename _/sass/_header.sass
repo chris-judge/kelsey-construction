@@ -1,0 +1,38 @@
+main
+	padding-top: 12.5rem
+
+header
+	height: 12.5rem
+	position: fixed
+	z-index: 900
+	top: 0
+	left: 0
+	right: 0
+	padding: 2rem 6%
+	background-color: white
+
+.logo-wrap
+	flex: 0 0 13.5rem
+	max-width: 13.5rem
+	padding-left: 3.5rem
+
+nav
+	flex: 0 0 calc(100% - 13.5rem)
+	max-width: calc(100% - 13.5rem)
+
+	a
+		padding: 2rem 3.5rem
+		display: inline-block
+		font-weight: 700
+		text-transform: uppercase
+		&:hover, &:focus
+			outline: 0
+			color: $orange
+
+.menu-header-nav-container
+	width: 100%
+
+.menu
+	display: flex
+	align-items: center
+	justify-content: flex-end
