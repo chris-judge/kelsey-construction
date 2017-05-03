@@ -1,0 +1,100 @@
+.page-contact
+	.gform_heading, .gfield_label
+		display: none
+	.flex
+		padding: 10rem 1.5rem
+		max-width: 80rem
+		margin: auto
+	.gform_wrapper
+		width: 100%
+	.gform_fields
+		display: flex
+		align-items: flex-start
+		justify-content: center
+		flex-wrap: wrap
+		li
+			flex: 0 0 50%
+			max-width: 50%
+			padding: 0.9rem
+			&:last-of-type
+				flex: 0 0 100%
+				max-width: 100%
+	.gform_footer
+		padding: 0.9rem
+		text-align: center
+	input, textarea
+		font-size: 2rem
+		color: black
+		text-transform: uppercase
+		font-family: $open_sans
+		font-weight: 700
+		width: 100%
+		appearance: none
+		border: none
+		border: 0.2rem solid transparent
+		box-shadow: inset 0 0 1rem rgba(0,0,0,0.3)
+		//border: 0.2rem inset rgba(0,0,0,0.5)
+		resize: none
+		padding: 1.6rem 1.8rem
+		&:focus
+			outline: 0
+			&::-webkit-input-placeholder
+				color: transparent
+			&::-moz-placeholder
+				color: transparent
+			&:-ms-input-placeholder
+				color: transparent
+			&:-moz-placeholder
+				color: transparent
+
+		&::-webkit-input-placeholder
+			color: black
+		&::-moz-placeholder
+			color: black
+		&:-ms-input-placeholder
+			color: black
+		&:-moz-placeholder
+			color: black
+
+	input[type="submit"]
+		margin: auto
+		cursor: pointer
+		width: auto
+		box-shadow: none
+		text-transform: uppercase
+		color: black
+		background-color: transparent
+		border: 0.3rem solid black
+		display: inline-block
+		padding: 1.8rem 2.2rem
+		font-weight: 700
+		font-size: 2rem
+		transition: $x-short
+		&:hover, &:focus
+			color: white
+			background-color: $orange
+			border-color: $orange
+
+	.validation_error
+		padding: 0.9rem
+		color: red
+
+	.gfield_description
+		display: none
+
+	.gfield_error input
+		border-color: red
+
+
+	.map-container
+		width: 100%
+
+	.map-container iframe
+		width: 100%
+		display: block
+		pointer-events: none
+		position: relative
+		z-index: -1
+
+	.map-container iframe.clicked
+		pointer-events: auto

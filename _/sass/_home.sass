@@ -9,6 +9,7 @@
 			margin: auto
 
 	.services
+		background-attachment: fixed
 		.overlay
 			padding: 10rem 1.5rem
 		.content-wrap
@@ -28,8 +29,13 @@
 		.flex
 			max-width: 139rem
 			margin: auto
+		.image-wrap
+			flex: 0 0 50rem
+			max-width: 50rem
 		.description-wrap
 			padding-left: 12rem
+			flex: 0 0 calc(100% - 50rem)
+			max-width: calc(100% - 50rem)
 		.button-wrap
 			padding-top: 2.5rem
 
@@ -37,3 +43,54 @@
 		padding: 10rem 1.5rem
 		.button-wrap
 			padding-top: 2.5rem
+
+
+@media screen and (max-width: 1440px)
+	.page-home
+		.legacy
+			.flex
+				max-width: 108rem
+				flex-wrap: wrap
+			.image-wrap
+				flex: 0 0 32rem
+				max-width: 32rem
+			.description-wrap
+				flex: 0 0 calc(100% - 32rem)
+				max-width: calc(100% - 32rem)
+
+
+@media screen and (max-width: 1024px)
+	.page-home
+		h1
+			flex: 0 0 100%
+			max-width: 100%
+			padding: 0 1.5rem
+		.legacy
+			.flex
+				max-width: 64rem
+			.image-wrap
+				flex: 0 0 100%
+				max-width: 100%
+				text-align: center
+				margin-bottom: 5rem
+			img
+				width: 100%
+				max-width: 40rem
+			.description-wrap
+				padding-left: 0
+				text-align: center
+				flex: 0 0 100%
+				max-width: 100%
+
+		.services 
+			li
+				padding: 1.5rem
+				flex: 0 0 50%
+				max-width: 50%
+
+@media screen and (max-width: 512px)
+	.page-home
+		.services 
+			li
+				flex: 0 0 100%
+				max-width: 100%

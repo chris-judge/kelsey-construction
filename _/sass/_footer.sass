@@ -1,9 +1,10 @@
 footer
 	z-index: 30
 	.flex
-		padding: 3rem
+		padding: 2rem
+		flex-wrap: wrap
 	.contact
-		padding: 0 2.5rem
+		padding: 1rem 2.5rem
 		a
 			display: flex
 			align-items: center
@@ -19,3 +20,21 @@ footer
 	.ce-wrap
 		padding: 1.5rem 3rem
 		font-size: 1.6rem
+
+@media screen and (max-width: 1440px)
+	footer
+		i.fa
+			font-size: 3.5rem
+
+
+@media screen and (max-width: 1360px)
+	footer
+		.flex
+			max-width: 89rem
+			margin: auto
+
+
+@media screen and (max-width: 900px)
+	footer
+		.flex
+			max-width: 54rem

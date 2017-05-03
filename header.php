@@ -38,6 +38,10 @@
 
 	<?php //Font Awesome ?>
 	<script src="https://use.fontawesome.com/814bf90a8a.js"></script>
+
+	<?php if(is_page('contact')): ?>
+		<?php gravity_form_enqueue_scripts( 1, true ); ?>
+	<?php endif; ?>
 	
 	<?php wp_head(); ?>
 	
