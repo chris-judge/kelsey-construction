@@ -10,5 +10,8 @@ $(document).ready(function() {
 	//Map
 	map();
 
+	//Nav
+	nav();
+
 });
 //--- Ready ---//

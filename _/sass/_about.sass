@@ -206,6 +206,7 @@
 			padding-top: 0
 
 	.statistics
+		background-attachment: fixed
 		.overlay
 			padding: 10rem 1.5rem
 	.statistic
@@ -234,3 +235,61 @@
 		flex: 0 0 0.4rem
 		max-width: 0.4rem
 		height: 22rem
+
+@media screen and (max-width: 1300px)
+	.page-about .block
+		flex: 0 0 50%
+		max-width: 50%
+		padding: 2rem
+
+@media screen and (max-width: 1280px)
+	.page-about 
+		.introduction 
+			.content-wrap
+				padding-right: 7.5rem
+			.flex
+				padding: 0 1.5rem
+
+@media screen and (max-width: 1024px)
+	.page-about 
+		.conclusion
+			.overlay
+				padding: 0 1.5rem
+		.flex
+			flex-wrap: wrap
+		.block
+			padding: 6rem 1.5rem
+			flex: 0 0 100%
+			max-width: 100%
+		.block-divider
+			height: 0.3rem
+			width: 100%
+			flex: 0 0 75%
+			max-width: 75%
+			margin: auto
+
+		.statistic 
+			padding: 2rem 6rem
+			.num
+				font-size: 7rem
+
+@media screen and (max-width: 900px)
+	.page-about .introduction
+		.flex
+			flex-wrap: wrap
+			text-align: center
+			max-width: 52rem
+			margin: auto
+		.content-wrap
+			margin-bottom: 4rem
+		.content-wrap, .image-wrap
+			flex: 0 0 100%
+			max-width: 100%
+			padding-left: 0
+			padding-right: 0
+		.box-shadow
+			display: none
+
+@media screen and (max-width: 450px)
+	.page-about .block
+		padding: 6rem 0

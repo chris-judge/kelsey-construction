@@ -71,3 +71,13 @@ function map(){
 					$(this).find('iframe').removeClass('clicked')});
 	}
 }
+
+
+//Nav
+
+function nav(){
+	$('.nav-btn .ham').click(function(event) {
+		$(this).toggleClass('open');
+		$('nav').toggleClass('active');
+	});
+}

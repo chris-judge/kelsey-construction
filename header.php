@@ -55,7 +55,7 @@
 				<a href="<?php echo get_home_url(); ?>"><?php echo wp_get_attachment_image($logo_id['id'], 'full'); ?></a>
 			</div>
 			<div class="nav-btn dn">
-				<div id="nav-icon3">
+				<div id="nav-icon3" class="ham">
 				  <span></span>
 				  <span></span>
 				  <span></span>

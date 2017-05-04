@@ -26,7 +26,7 @@
 				</div>
 			</div>
 			<div class="ce-wrap tac">
-				<?php the_field('copyright','options'); ?></p>
+				<?php the_field('copyright','options'); ?>
 			</div>
 		</footer>
 		<?php wp_footer(); ?>
