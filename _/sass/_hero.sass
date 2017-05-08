@@ -9,6 +9,7 @@
 
 .hero
 	height: calc(100vh - 12.5rem)
+	position: relative
 .hero.half
 	height: calc(50vh - 12.5rem)
 	min-height: 42.5rem
@@ -32,6 +33,50 @@
 	justify-content: center
 
 
+.slides, .slide
+	position: absolute
+	top: 0
+	bottom: 0
+	right: 0
+	left: 0
+
+.slides
+	z-index: -1
+
+.slide
+	z-index: 20
+	opacity: 0
+	pointer-events: none
+	transition: $long
+
+.slide.active
+	opacity: 1
+	pointer-events: auto
+	z-index: 30
+
+.slider-dots
+	position: absolute
+	bottom: 4rem
+	left: 0
+	right: 0
+	padding: 1rem 1.5rem
+
+.dot
+	width: 2.1rem
+	height: 2.1rem
+	border-radius: 50%
+	border: 0.3rem solid white
+	transition: $x-short
+	margin: 0 1rem
+	cursor: pointer
+	&:hover, &:focus
+		background-color: white
+
+.dot.active
+	pointer-events: none
+	background-color: white
+
+
 
 @media screen and (max-width: 1024px)
 	.hero
@@ -43,3 +88,11 @@
 @media screen and (max-width: 450px)
 	.hero.half
 		height: calc(100vh - 7.5rem)
+
+@media screen and (max-width: 350px)
+	.slider-dots
+		bottom: 2rem
+	.dot
+		width: 1.9rem
+		height: 1.9rem
+		border: 0.2rem solid white

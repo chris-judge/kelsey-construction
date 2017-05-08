@@ -32,15 +32,36 @@
 		.image-wrap
 			flex: 0 0 50rem
 			max-width: 50rem
+			transition: $x-short
+		.image-wrap.rev
+			opacity: 0
+			transform: translateX(-4rem)
 		.description-wrap
 			padding-left: 12rem
 			flex: 0 0 calc(100% - 50rem)
 			max-width: calc(100% - 50rem)
+			h2, h3, .ce-wrap, .button-wrap
+				transition: $x-short
+			h3
+				transition-delay: 0.2s
+			.ce-wrap
+				transition-delay: 0.4s
+			.button-wrap
+				transition-delay: 0.6s
+		.description-wrap.rev
+			h2, h3, .ce-wrap, .button-wrap
+				opacity: 0
+				transform: translateX(4rem)
 		.button-wrap
 			padding-top: 2.5rem
 
 	.conclusion
 		padding: 10rem 1.5rem
+		.content-wrap
+			transition: $x-short
+		.content-wrap.rev
+			opacity: 0
+			transform: translateY(4rem)
 		.button-wrap
 			padding-top: 2.5rem
 

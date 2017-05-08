@@ -4,6 +4,19 @@
 		.flex
 			max-width: 128rem
 			margin: auto
+			h3
+				transition-delay: 0.2s
+			.ce-wrap
+				transition-delay: 0.4s
+			.image-wrap, h2, h3, .ce-wrap
+				transition: $x-short
+		.flex.rev
+			.image-wrap
+				opacity: 0
+				transform: translateX(4rem)
+			h2, h3, .ce-wrap
+				opacity: 0
+				transform: translateX(-4rem)
 		.content-wrap, .image-wrap
 			flex: 0 0 50%
 			max-width: 50%
@@ -69,7 +82,7 @@
 	li
 		max-width: 19rem
 		height: 7.38rem
-		margin-bottom: 0.8rem
+		margin-bottom: 1rem
 		display: flex
 		align-items: center
 		justify-content: flex-start
@@ -226,10 +239,18 @@
 			padding: 6rem 1.5rem
 		.button-wrap
 			padding-top: 2rem
+		.flex
+			.block:nth-of-type(3)
+				transition-delay: 0.2s
+		.flex.rev
+			.block
+				opacity: 0
+				transform: translateY(4rem)
 	.block
 		flex: 0 0 61rem
 		max-width: 100%
 		padding: 2rem 12.5rem
+		transition: $x-short
 
 	.block-divider
 		flex: 0 0 0.4rem
@@ -250,6 +271,10 @@
 			.flex
 				padding: 0 1.5rem
 
+		.wheel
+			padding: 2rem 8rem 2rem 3rem
+		.display
+			padding-right: 3rem
 @media screen and (max-width: 1024px)
 	.page-about 
 		.conclusion
@@ -257,6 +282,24 @@
 				padding: 0 1.5rem
 		.flex
 			flex-wrap: wrap
+			max-width: 90rem
+			margin: auto
+		.wheel
+			display: none
+		.display
+			padding-right: 0
+			flex: 0 0 100%
+			max-width: 100%
+			margin-bottom: 6rem
+			&:last-of-type
+				margin-bottom: 0
+			.image-wrap
+				height: auto
+			img
+				width: 100%
+				height: auto
+		.timeline .flex
+			height: auto
 		.block
 			padding: 6rem 1.5rem
 			flex: 0 0 100%

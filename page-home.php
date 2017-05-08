@@ -19,7 +19,8 @@
 				<?php $counter = 1; ?>
 				<?php while( have_rows('images') ): the_row(); ?>
 					<?php $counter++; ?>
-					<div class="slide image-bg top img-op" data-index="<?php echo $counter; ?>" img-full="<?=wp_get_attachment_url($image_id);?>" img-large="<?=$img_src[0];?>"></div>
+					<?php $image = get_sub_field('image'); ?>
+					<div class="slide image-bg top" data-index="<?php echo $counter; ?>" img-full="<?=$image['url'];?>" img-large="<?=$image['sizes']['medium'];?>"></div>
 				<?php endwhile; ?>
 				</div>
 			<?php else: ?>
@@ -35,11 +36,12 @@
 				</div>
 
 				<?php if( have_rows('images') ): ?>
-					<div class="dots">
-					<?php $counter = 0; ?>
+					<div class="slider-dots">
+					<?php $counter = 1; ?>
+					<div class="dot active dib" data-index="<?=$counter;?>"></div>
 					<?php while( have_rows('images') ): the_row(); ?>
 						<?php $counter++; ?>
-						<div class="dot" data-index="<?php $counter; ?>"></div>
+							<div class="dot dib" data-index="<?=$counter;?>"></div>
 					<?php endwhile; ?>
 					</div>
 				<?php endif; ?>	
@@ -94,11 +96,11 @@
 
 			<section class="legacy">
 				<div class="flex center">
-					<div class="image-wrap">
+					<div class="image-wrap rev">
 						<?php $logo_id = get_sub_field('image'); ?>
 						<?php echo wp_get_attachment_image($logo_id['id'], 'full'); ?>
 					</div>
-					<div class="description-wrap">
+					<div class="description-wrap rev">
 						<h2><?php the_sub_field('headline'); ?></h2>
 						<h3><?php the_sub_field('tagline'); ?></h3>
 						<div class="ce-wrap">
@@ -118,7 +120,7 @@
 			<?php $image_id = get_sub_field('background_image'); ?>
 
 			<section class="conclusion image-bg top img-op tac box-shadow por" img-full="<?=$image_id['url'];?>" img-large="<?=$image_id['sizes']['medium'];?>">
-				<div class="content-wrap">
+				<div class="content-wrap rev">
 					<h2><?php the_sub_field('headline'); ?></h2>
 					<?php include('_/partials/button.php'); ?>
 				</div>

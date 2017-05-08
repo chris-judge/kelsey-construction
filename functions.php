@@ -31,7 +31,7 @@
     include('_/inc/images.php');
 
     // Custom Post Types / Taxonomies
-    // include('_/inc/post_types.php');
+    include('_/inc/post_types.php');
 
     // Custom Nav
     include('_/inc/nav.php');

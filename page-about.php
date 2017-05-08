@@ -30,7 +30,7 @@
 		<?php while( have_rows('introduction') ): the_row(); ?>
 
 			<section class="introduction box-shadow por">
-				<div class="flex center">
+				<div class="flex center rev">
 					<div class="content-wrap">
 						<h2><?php the_sub_field('headline'); ?></h2>
 						<h3 class="txt-orange"><?php the_sub_field('tagline'); ?></h3>
@@ -54,13 +54,13 @@
 
 			<?php $image_id = get_sub_field('background_image'); ?>
 
-			<section class="statistics image-bg top img-op txt-white tac txt-shadow" img-full="<?=$image_id['url'];?>" img-large="<?=$image_id['sizes']['medium'];?>">
+			<section class="statistics image-bg top img-op txt-white tac txt-shadow rev" img-full="<?=$image_id['url'];?>" img-large="<?=$image_id['sizes']['medium'];?>">
 				<div class="overlay half">
 				<?php if( have_rows('statistic') ): ?>
 					<div class="flex center">
 						<?php while( have_rows('statistic') ): the_row(); ?>
 							<div class="statistic">
-								<p class="num"><?php the_sub_field('number'); ?></p>
+								<p class="num counter" data-count="<?php the_sub_field('number'); ?>">0</p>
 								<p class="txt-space"><?php the_sub_field('text'); ?></p>
 							</div>
 						<?php endwhile; ?>
@@ -118,7 +118,7 @@
 					</div>
 					<?php endif; ?>   
 					<?php if( have_rows('point') ): ?>
-					<div class="display">
+					<div class="display original">
 						<?php $counter = 1; ?>
 						<?php while( have_rows('point') ): the_row(); ?>
 							<?php if($counter == 1): ?>
@@ -147,7 +147,7 @@
 
 			<section class="conclusion image-bg top img-op tac box-shadow por txt-white txt-shadow" img-full="<?=$image_id['url'];?>" img-large="<?=$image_id['sizes']['medium'];?>">
 				<div class="overlay half">
-				<div class="flex center">
+				<div class="flex center rev">
 						<?php if( have_rows('block') ): ?>
 						<?php $counter = 1; ?>
 						<?php while( have_rows('block') ): the_row(); ?>

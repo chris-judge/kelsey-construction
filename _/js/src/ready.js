@@ -7,11 +7,23 @@ $(document).ready(function() {
 	//Wheel Init
 	wheel();
 
+	//Wheel mobile
+	wheelMobile();
+	
 	//Map
 	map();
 
 	//Nav
 	nav();
+
+	//Nav hide
+	navHide();
+
+	//Slider
+	heroSlider();
+
+	//Reveals
+	reveals();
 
 });
 //--- Ready ---//

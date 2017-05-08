@@ -5,6 +5,8 @@
 		padding: 10rem 1.5rem
 		max-width: 80rem
 		margin: auto
+	.form
+		z-index: 5
 	.gform_wrapper
 		width: 100%
 	.gform_fields
@@ -88,15 +90,15 @@
 
 	.map-container
 		width: 100%
+		height: 450px
 
-	.map-container iframe
+	.map-container .wpgmza_map
 		width: 100%
 		display: block
 		pointer-events: none
 		position: relative
-		z-index: -1
 
-	.map-container iframe.clicked
+	.map-container .wpgmza_map.clicked
 		pointer-events: auto
 
 
