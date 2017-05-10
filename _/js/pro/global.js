@@ -3,6 +3,8 @@ var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = $('header').outerHeight();
+
+var wpJSON = window.location.origin+'/kelsey-construction'+'/wp-json/wp/v2/';
 //--- Variables ---//
 // Hero Image Load
 function imgOp(){
@@ -200,11 +202,9 @@ function counter(){
 	$('.counter').each(function() {
 	  var $this = $(this),
 	      countTo = $this.attr('data-count');
-	  
 	  $({ countNum: $this.text()}).animate({
 	    countNum: countTo
 	  },
-
 	  {
 
 	    duration: 2000,
@@ -216,10 +216,72 @@ function counter(){
 	      $this.text(this.countNum);
 	      //alert('finished');
 	    }
-
 	  });  
-	  
-	  
+	});
+}
+
+//Project 
+function projectSort(){
+	$('.projects .cat-menu .btn').click(function(event) {
+		$('.projects .cat-menu .btn.active').removeClass('active');
+		$(this).addClass('active');
+
+		if($(this).attr('data-cat') == $('.map-wrap').attr('data-cat') && !$('.map-wrap').hasClass('active')){
+			$('.map-wrap').removeClass('hidden');
+			$('.map-wrap').addClass('active').html($('.map-wrap').attr('data-iframe'));
+			getProjects($(this).attr('data-cat'));
+		}else if($(this).attr('data-cat') == $('.map-wrap').attr('data-cat') && $('.map-wrap').hasClass('hidden')){
+			$('.map-wrap').removeClass('hidden');
+			getProjects($(this).attr('data-cat'));
+		}else if($(this).attr('data-cat') != $('.map-wrap').attr('data-cat')){
+			$('.map-wrap').addClass('hidden');
+			getProjects($(this).attr('data-cat'));
+		}
+
+	});
+}
+
+//Project Init
+function projectInit(){
+	$('.projects .tile').click(function(event) {
+		
+	});
+}
+
+
+//Get Projects
+function getProjects(category){
+	$('.projects .grid.flex').html('');
+	$('.loader').addClass('active');
+	$.get(wpJSON+'projects?categories='+category, function(data) {
+		$('.loader').removeClass('active');
+		if(data.length > 0){
+			$.each(data, function() {
+				var elements = '<div class="tile txt-white" data-cat="'+this['categories'].toString()+'">';
+				elements += '<div class="image-bg top" style="background-image:url('+this['featured_image_src']+');">';
+				elements += '<div class="overlay flex">';
+				elements += '<div class="inner-wrap">';
+				elements += '<h2>'+this['title']['rendered']+'</h2>';
+				elements += '<h3>'+this['acf']['location']+'</h3>';
+				elements += '<div class="dn description">'+this['content']['rendered']+'</div>';
+
+				if(this['acf']['gallery_images']){
+					elements += '<div class="gallery-images dn">'
+					for (var i = 0; i < this['acf']['gallery_images'].length; i++) {
+						elements += '<div class="img" data-url="'+this['acf']['gallery_images'][i]['image']+'"></div>'
+					}
+					elements += '</div>';
+				}
+
+				elements += '<div class="btn">View Project</div>';
+				elements += '</div></div></div></div>';
+				$('.projects .grid.flex').append(elements);
+			});
+		}else{
+			var elements = '<h2 class="tac db">Sorry, no posts were found.</h2>';
+		}
+		$('.projects .grid.flex').append(elements);
+		projectInit();
 
 	});
 }
@@ -249,6 +311,9 @@ $(document).ready(function() {
 
 	//Reveals
 	reveals();
+
+	//Project Sort
+	projectSort();
 
 });
 //--- Ready ---//

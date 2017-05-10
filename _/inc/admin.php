@@ -54,3 +54,40 @@ function new_excerpt_more( $more ) {
     return '...';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+
+/**
+ * Add REST API support to an already registered post type.
+ */
+add_action( 'init', 'my_custom_post_type_rest_support', 25 );
+function my_custom_post_type_rest_support() {
+  global $wp_post_types;
+ 
+  //be sure to set this to the name of your post type!
+  $post_type_name = 'projects';
+  if( isset( $wp_post_types[ $post_type_name ] ) ) {
+    $wp_post_types[$post_type_name]->show_in_rest = true;
+    // Optionally customize the rest_base or controller class
+    $wp_post_types[$post_type_name]->rest_base = $post_type_name;
+    $wp_post_types[$post_type_name]->rest_controller_class = 'WP_REST_Posts_Controller';
+  }
+}
+
+
+add_action( 'rest_api_init', 'add_thumbnail_to_JSON' );
+function add_thumbnail_to_JSON() {
+//Add featured image
+register_rest_field( 'projects',
+    'featured_image_src', //NAME OF THE NEW FIELD TO BE ADDED - you can call this anything
+    array(
+        'get_callback'    => 'get_image_src',
+        'update_callback' => null,
+        'schema'          => null,
+         )
+    );
+}
+
+function get_image_src( $object, $field_name, $request ) {
+    $feat_img_array = wp_get_attachment_image_src($object['featured_media'], 'medium', true);
+    return $feat_img_array[0];
+}

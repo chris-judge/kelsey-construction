@@ -25,5 +25,8 @@ $(document).ready(function() {
 	//Reveals
 	reveals();
 
+	//Project Sort
+	projectSort();
+
 });
 //--- Ready ---//

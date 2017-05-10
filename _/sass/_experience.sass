@@ -26,11 +26,25 @@
 		.content-wrap
 			max-width: 140rem
 			margin: auto
+		li
+			margin-bottom: 0.5rem
+
+		.map-wrap
+			padding: 1.5rem 0 2rem
+			iframe
+				transition: $x-short
+		.map-wrap.hidden iframe
+			height: 0
+			overflow: hidden
 
 
 	.grid
 		flex-wrap: wrap
-		padding: 3rem 0
+		padding: 0 0 3rem
+		min-height: 31.5rem
+		h2.db
+			flex: 0 0 100%
+			max-width: 100%
 
 	.tile
 		flex: 0 0 25%

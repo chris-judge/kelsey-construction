@@ -75,13 +75,33 @@
 					<?php if( have_rows('categories') ): ?>
 					<?php while( have_rows('categories') ): the_row(); ?>
 						<?php $categories = get_sub_field('category'); ?>
-						<ul>
+						<ul class="cat-menu">
 						<?php foreach ($categories as $category): ?>
-							<li class="btn sm hide" data-cat="<?=get_cat_name($category);?>"><?=get_cat_name($category);?></li>
+							<?php if(get_cat_name($category) == 'Grocery'): ?>
+								<?php $grocery_cat = $category; ?>
+							<?php endif; ?>
+							<li class="btn sm hide" data-cat="<?=$category;?>"><?=get_cat_name($category);?></li>
 						<?php endforeach; ?>
 						</ul>
 					<?php endwhile; ?>
 					<?php endif; ?>
+					<div class="map-wrap" data-cat="<?=$grocery_cat;?>" data-iframe="<?php the_sub_field('grocery_map'); ?>"></div>
+					<div class="loading">
+						<div class="loader loader--style3" title="2">
+						  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+						  <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+						    <animateTransform attributeType="xml"
+						      attributeName="transform"
+						      type="rotate"
+						      from="0 25 25"
+						      to="360 25 25"
+						      dur="0.6s"
+						      repeatCount="indefinite"/>
+						    </path>
+						  </svg>
+						</div>
+					</div>
 					<div class="grid flex">
 						<?php $query = new WP_Query( array( 'post_type' => 'projects', 'posts_per_page' => '16' ) ); ?>
 						<?php if ( $query->have_posts() ) : ?>
@@ -89,13 +109,24 @@
 						    	<?php 
 									$image_id = get_post_thumbnail_id();
 									$img_src = wp_get_attachment_image_src($image_id,'medium');
+									$category_list = get_the_category();
 								?>
-						        <div class="tile txt-white">
+						        <div class="tile txt-white" data-cat="<?php foreach ($category_list as $category){ echo $category->term_id.','; } ?>">
 						        	<div class="image-bg top" style="background-image:url(<?=$img_src[0];?>);">
 							        	<div class="overlay flex">
 							        		<div class="inner-wrap">
 									            <h2><?php the_title(); ?></h2>
 									            <h3><?php the_field('location'); ?></h3>
+									            <div class="description dn">
+									            	<?php the_content(); ?>
+									            </div>
+												<?php if( have_rows('gallery_images') ): ?>
+												<div class="gallery-images dn">
+													<?php while( have_rows('gallery_images') ): the_row(); ?>
+														<div class="img" data-url="<?php the_sub_field('image'); ?>"></div>
+													<?php endwhile; ?>
+												</div>
+												<?php endif; ?>   
 									            <div class="btn">View Project</div>
 								            </div>
 							            </div>
@@ -111,6 +142,13 @@
 			
 		<?php endwhile; ?>
 		<?php endif; ?>
+
+		<div class="light-box">
+			<div class="close">&times;</div>
+			<div class="content-wrap">
+				
+			</div>
+		</div>
 	
 </main>
 

@@ -69,6 +69,21 @@ img
 	height: auto
 
 
+//Loading
+.loader
+	display: none
+	text-align: center
+	padding: 0.5rem 1.5rem
+	margin: 0 auto
+	vertical-align: top
+	svg path, svg rect
+		fill: $orange
+
+.loader.active
+	display: inline-block
+
+
+
 // Content Wrap
 .ce-wrap
 	padding-top: 0.5rem
@@ -118,6 +133,22 @@ body.unlock, html.unlock
 	overflow: visible
 	position: static
 
+
+//Light Box
+.light-box
+	position: fixed
+	background-color: rgba(0,0,0,0.9)
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	opacity: 0
+	pointer-events: none
+	transition: $long
+
+.light-box.active
+	opacity: 1
+	pointer-events: auto
 
 
 @media screen and (max-width: 1024px)
