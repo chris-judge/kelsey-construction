@@ -30,6 +30,8 @@ h3
 	font-weight: 700
 	text-transform: uppercase
 	padding: 1rem 0
+p
+	line-height: 1.45em
 
 .txt-lg
 	font-size: 2.3rem
@@ -137,7 +139,7 @@ body.unlock, html.unlock
 //Light Box
 .light-box
 	position: fixed
-	background-color: rgba(0,0,0,0.9)
+	background-color: rgba(0,0,0,0.8)
 	top: 0
 	left: 0
 	right: 0
@@ -145,10 +147,119 @@ body.unlock, html.unlock
 	opacity: 0
 	pointer-events: none
 	transition: $long
+	z-index: 999
+	padding: 2rem
+	display: flex
+	align-items: center
+	justify-content: center
+
+	.content-wrap
+		background-color: rgba(0,0,0,0.6)
+		flex: 0 0 calc(100% - 16rem)
+		max-width: calc(100% - 16rem)
+
+	.image-wrap
+		width: 100%
+		height: 50rem
+		position: relative
+
+		.img
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			transition: $x-short
+			opacity: 0
+
+		.img.active
+			opacity: 1
+			z-index: 30
+
+	.description-wrap
+		padding: 2.5rem
+
+	hgroup
+		h2, h3
+			display: inline-block
+			margin: auto 1rem auto auto
+
+	.btn
+		margin: 0 0.5rem
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		i
+			margin-left: 1.2rem
+			font-size: 3.5rem
+			font-style: normal
+	.btn.prev
+		i
+			margin-left: 0
+			margin-right: 1.2rem
+
+	.btn.prev.hide, .btn.next.hide
+		opacity: 0
+		pointer-events: none
+
+	.side
+		flex: 0 0 8rem
+		max-width: 8rem
+		height: 100%
+		font-size: 12rem
+		padding: 15rem 0
+		transition: $x-short
+		cursor: pointer
+		&:hover
+			color: $orange
+	.side.next
+		text-align: right
+
+	.side.hide
+		opacity: 0
+		pointer-events: none
+
+.light-box-wrap
+	max-width: 140rem
+	margin: auto
+	width: 100%
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-wrap: wrap
+
+.light-box-nav
+	display: flex
+	align-items: flex-start
+	justify-content: flex-end
+	flex: 0 0 100%
+	max-width: 100%
+	margin-bottom: 1.5rem
+	padding: 0 7.5rem
 
 .light-box.active
 	opacity: 1
 	pointer-events: auto
+
+@media screen and (max-width: 1400px)
+	.light-box .image-wrap
+		height: 38rem
+
+	.light-box-wrap
+		max-width: 110rem
+
+	.light-box .btn.sm
+		padding: 0.5rem 0.9rem
+		font-size: 1.6rem
+
+	.light-box .btn i
+		font-size: 2.5rem
+
+	.light-box .side
+		font-size: 8rem
+
+	.light-box .description-wrap
+		padding: 2rem 2.5rem
 
 
 @media screen and (max-width: 1024px)
@@ -156,12 +267,50 @@ body.unlock, html.unlock
 		font-size: 5.5rem
 	h2
 		font-size: 4.2rem
+	p
+		font-size: 1.8rem
+
+@media screen and (max-width: 880px)
+	.light-box
+		overflow: scroll
+		background-color: rgba(0,0,0,0.95)
+		.side
+			display: none
+		.content-wrap
+			flex: 0 0 100%
+			max-width: 100%
+
+	.light-box-nav
+		padding: 0
 
 @media screen and (max-width: 512px)
 	h1
 		font-size: 4.4rem
 	h2
 		font-size: 3.2rem
+
+@media screen and (max-width: 485px)
+	.light-box
+		padding: 4rem 1.5rem
+	.light-box-nav
+		margin-bottom: 0
+		margin-top: 1.5rem
+		flex-wrap: wrap
+		order: 2
+		.btn
+			flex: 0 0 100%
+			max-width: 100%
+			margin: 0
+			margin-bottom: 1rem
+		.close
+			order: 3
+		.prev
+			order: 2
+		.next
+			order: 1
+
+	.light-box .description-wrap
+		padding: 2rem 0
 
 @media screen and (max-width: 475px)
 	body

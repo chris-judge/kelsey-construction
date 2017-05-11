@@ -28,5 +28,12 @@ $(document).ready(function() {
 	//Project Sort
 	projectSort();
 
+	//Proejct init
+	projectInit();
+
+	//Light box init
+	lightBoxInit();
+
+
 });
 //--- Ready ---//

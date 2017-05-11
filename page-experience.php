@@ -111,7 +111,7 @@
 									$img_src = wp_get_attachment_image_src($image_id,'medium');
 									$category_list = get_the_category();
 								?>
-						        <div class="tile txt-white" data-cat="<?php foreach ($category_list as $category){ echo $category->term_id.','; } ?>">
+						        <div class="tile txt-white" data-cat="<?php foreach ($category_list as $category){ echo $category->term_id.','; } ?>" data-title="<?php the_title(); ?>" data-location="<?php the_field('location'); ?>" data-img="<?=$img_src[0];?>">
 						        	<div class="image-bg top" style="background-image:url(<?=$img_src[0];?>);">
 							        	<div class="overlay flex">
 							        		<div class="inner-wrap">
@@ -144,9 +144,21 @@
 		<?php endif; ?>
 
 		<div class="light-box">
-			<div class="close">&times;</div>
-			<div class="content-wrap">
-				
+			<div class="light-box-wrap">
+				<div class="light-box-nav txt-white">
+					<div class="btn sm prev"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Prev. Project</span></div>
+					<div class="btn sm next"><span>Next Project</span> <i class="fa fa-angle-right" aria-hidden="true"></i></div>
+					<div class="btn sm close"><span>Close</span> <i>&times;</i></div>
+				</div>
+				<div class="side prev txt-white"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+				<div class="content-wrap txt-white">
+					<div class="image-wrap image-bg top"></div>
+					<div class="description-wrap">
+						<hgroup><h2></h2><h3 class="txt-orange"></h3></hgroup>
+						<div class="text-wrap"></div>
+					</div>
+				</div>
+				<div class="side next txt-white"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
 			</div>
 		</div>
 	

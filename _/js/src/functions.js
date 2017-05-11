@@ -220,7 +220,11 @@ function projectSort(){
 
 		if($(this).attr('data-cat') == $('.map-wrap').attr('data-cat') && !$('.map-wrap').hasClass('active')){
 			$('.map-wrap').removeClass('hidden');
-			$('.map-wrap').addClass('active').html($('.map-wrap').attr('data-iframe'));
+			if($(window).width() > 1024){
+				$('.map-wrap').addClass('active').html($('.map-wrap').attr('data-iframe'));
+			}else{
+				$('.map-wrap').addClass('active');
+			}
 			getProjects($(this).attr('data-cat'));
 		}else if($(this).attr('data-cat') == $('.map-wrap').attr('data-cat') && $('.map-wrap').hasClass('hidden')){
 			$('.map-wrap').removeClass('hidden');
@@ -233,10 +237,86 @@ function projectSort(){
 	});
 }
 
+//Lightbox
+function lightBoxInit(){
+	$('.light-box .close').click(function(event) {
+		$('.projects .tile').removeClass('active');
+		$('body,html').removeClass('lock');
+		$('.light-box').removeClass('active');
+		$('.light-box h2').html('');
+		$('.light-box h3').html('');
+		$('.light-box .image-wrap').attr('style', '');
+		$('.light-box .description-wrap .text-wrap').html('');
+	});
+
+	$('.light-box .btn.prev').click(function(event) {
+		if($('.projects .tile').last().hasClass('active')){
+			$('.projects .tile.active').removeClass('active');
+			$('.projects .tile').first().addClass('active');
+			$('.projects .tile.active').click();
+		}else{
+			$('.projects .tile.active').removeClass('active').next().addClass('active');
+			$('.projects .tile.active').click();
+		}
+	});
+
+	$('.light-box .btn.next').click(function(event) {
+		if($('.projects .tile').first().hasClass('active')){
+			$('.projects .tile.active').removeClass('active');
+			$('.projects .tile').last().addClass('active');
+			$('.projects .tile.active').click();
+		}else{
+			$('.projects .tile.active').removeClass('active').prev().addClass('active');
+			$('.projects .tile.active').click();
+		}
+	});
+
+	$('.light-box .side.next').click(function(event) {
+		if($('.light-box .img').last().hasClass('active')){
+			$('.light-box .img.active').removeClass('active');
+			$('.light-box .img').first().addClass('active');
+		}else{
+			$('.light-box .img.active').removeClass('active').next().addClass('active');
+		}
+	});
+	$('.light-box .side.prev').click(function(event) {
+		if($('.light-box .img').first().hasClass('active')){
+			$('.light-box .img.active').removeClass('active');
+			$('.light-box .img').last().addClass('active');
+		}else{
+			$('.light-box .img.active').removeClass('active').prev().addClass('active');
+		}
+	});
+}
+
 //Project Init
 function projectInit(){
+
 	$('.projects .tile').click(function(event) {
-		
+		$(this).addClass('active');
+		$('body,html').addClass('lock');
+
+		$('.light-box h2').html($(this).attr('data-title'));
+		$('.light-box h3').html($(this).attr('data-location'));
+		$('.light-box .image-wrap').append('<div class="img image-bg top active" style="background-image:url('+$(this).attr('data-img')+');"></div>')
+		if($(this).find('.img').length > 1 && $(window).width() > 880){
+			$('.light-box .side.hide').removeClass('hide');
+			$(this).find('.img').each(function(index, el) {
+				$('.light-box .image-wrap').append('<div class="img image-bg top" style="background-image:url('+$(this).attr("data-url")+');"></div>')
+			});
+		}else{
+			$('.light-box .side').addClass('hide');
+		}
+		if($('.projects .tile').length <= 1){
+			$('.light-box .btn.prev').addClass('hide');
+			$('.light-box .btn.next').addClass('hide');
+		}else{
+			$('.light-box .btn.hide').removeClass('hide');
+			$('.light-box .btn.hide').removeClass('hide');
+		}
+		$('.light-box .description-wrap .text-wrap').html($(this).find('.description').html());
+
+		$('.light-box').addClass('active');
 	});
 }
 
@@ -249,7 +329,7 @@ function getProjects(category){
 		$('.loader').removeClass('active');
 		if(data.length > 0){
 			$.each(data, function() {
-				var elements = '<div class="tile txt-white" data-cat="'+this['categories'].toString()+'">';
+				var elements = '<div class="tile txt-white" data-cat="'+this['categories'].toString()+'" data-title="'+this['title']['rendered']+'" data-location="'+this['acf']['location']+'" data-img="'+this['featured_image_src']+'">';
 				elements += '<div class="image-bg top" style="background-image:url('+this['featured_image_src']+');">';
 				elements += '<div class="overlay flex">';
 				elements += '<div class="inner-wrap">';
