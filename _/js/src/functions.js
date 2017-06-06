@@ -325,35 +325,70 @@ function projectInit(){
 function getProjects(category){
 	$('.projects .grid.flex').html('');
 	$('.loader').addClass('active');
-	$.get(wpJSON+'projects?categories='+category, function(data) {
-		$('.loader').removeClass('active');
-		if(data.length > 0){
-			$.each(data, function() {
-				var elements = '<div class="tile txt-white" data-cat="'+this['categories'].toString()+'" data-title="'+this['title']['rendered']+'" data-location="'+this['acf']['location']+'" data-img="'+this['featured_image_src']+'">';
-				elements += '<div class="image-bg top" style="background-image:url('+this['featured_image_src']+');">';
-				elements += '<div class="overlay flex">';
-				elements += '<div class="inner-wrap">';
-				elements += '<h2>'+this['title']['rendered']+'</h2>';
-				elements += '<h3>'+this['acf']['location']+'</h3>';
-				elements += '<div class="dn description">'+this['content']['rendered']+'</div>';
+	console.log(category);
+	if(category == 'All'){
+		$.get(wpJSON+'projects', function(data) {
+			$('.loader').removeClass('active');
+			if(data.length > 0){
+				$.each(data, function() {
+					var elements = '<div class="tile txt-white" data-cat="'+this['categories'].toString()+'" data-title="'+this['title']['rendered']+'" data-location="'+this['acf']['location']+'" data-img="'+this['featured_image_src']+'">';
+					elements += '<div class="image-bg top" style="background-image:url('+this['featured_image_src']+');">';
+					elements += '<div class="overlay flex">';
+					elements += '<div class="inner-wrap">';
+					elements += '<h2>'+this['title']['rendered']+'</h2>';
+					elements += '<h3>'+this['acf']['location']+'</h3>';
+					elements += '<div class="dn description">'+this['content']['rendered']+'</div>';
 
-				if(this['acf']['gallery_images']){
-					elements += '<div class="gallery-images dn">'
-					for (var i = 0; i < this['acf']['gallery_images'].length; i++) {
-						elements += '<div class="img" data-url="'+this['acf']['gallery_images'][i]['image']+'"></div>'
+					if(this['acf']['gallery_images']){
+						elements += '<div class="gallery-images dn">'
+						for (var i = 0; i < this['acf']['gallery_images'].length; i++) {
+							elements += '<div class="img" data-url="'+this['acf']['gallery_images'][i]['image']+'"></div>'
+						}
+						elements += '</div>';
 					}
-					elements += '</div>';
-				}
 
-				elements += '<div class="btn">View Project</div>';
-				elements += '</div></div></div></div>';
-				$('.projects .grid.flex').append(elements);
-			});
-		}else{
-			var elements = '<h2 class="tac db">Sorry, no posts were found.</h2>';
-		}
-		$('.projects .grid.flex').append(elements);
-		projectInit();
+					elements += '<div class="btn">View Project</div>';
+					elements += '</div></div></div></div>';
+					$('.projects .grid.flex').append(elements);
+				});
+			}else{
+				var elements = '<h2 class="tac db">Sorry, no posts were found.</h2>';
+			}
+			$('.projects .grid.flex').append(elements);
+			projectInit();
 
-	});
+		});
+	}else{
+		$.get(wpJSON+'projects?categories='+category, function(data) {
+			$('.loader').removeClass('active');
+			if(data.length > 0){
+				$.each(data, function() {
+					var elements = '<div class="tile txt-white" data-cat="'+this['categories'].toString()+'" data-title="'+this['title']['rendered']+'" data-location="'+this['acf']['location']+'" data-img="'+this['featured_image_src']+'">';
+					elements += '<div class="image-bg top" style="background-image:url('+this['featured_image_src']+');">';
+					elements += '<div class="overlay flex">';
+					elements += '<div class="inner-wrap">';
+					elements += '<h2>'+this['title']['rendered']+'</h2>';
+					elements += '<h3>'+this['acf']['location']+'</h3>';
+					elements += '<div class="dn description">'+this['content']['rendered']+'</div>';
+
+					if(this['acf']['gallery_images']){
+						elements += '<div class="gallery-images dn">'
+						for (var i = 0; i < this['acf']['gallery_images'].length; i++) {
+							elements += '<div class="img" data-url="'+this['acf']['gallery_images'][i]['image']+'"></div>'
+						}
+						elements += '</div>';
+					}
+
+					elements += '<div class="btn">View Project</div>';
+					elements += '</div></div></div></div>';
+					$('.projects .grid.flex').append(elements);
+				});
+			}else{
+				var elements = '<h2 class="tac db">Sorry, no posts were found.</h2>';
+			}
+			$('.projects .grid.flex').append(elements);
+			projectInit();
+
+		});
+	}
 }

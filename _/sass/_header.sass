@@ -1,4 +1,4 @@
-main
+body
 	padding-top: 12.5rem
 
 header
@@ -16,13 +16,13 @@ header.nav-up
 	transform: translateY(-110%)
 
 .logo-wrap
-	flex: 0 0 13.5rem
-	max-width: 13.5rem
+	flex: 0 0 20%
+	max-width: 20%
 	padding-left: 3.5rem
 
 nav
-	flex: 0 0 calc(100% - 13.5rem)
-	max-width: calc(100% - 13.5rem)
+	flex: 0 0 80%
+	max-width: 80%
 
 	a
 		padding: 2rem 3.5rem
@@ -111,7 +111,7 @@ nav
 
 
 @media screen and (max-width: 1024px)
-	main
+	body
 		padding-top: 8rem
 	header
 		height: 8rem
@@ -123,7 +123,8 @@ nav
 			max-width: 4rem
 	.nav-btn
 		display: inline-block 
-		flex: 0 0 calc(100% - 13.5rem)
+		flex: 0 0 80%
+		max-width: 80%
 
 	nav
 		pointer-events: none
@@ -134,7 +135,7 @@ nav
 		left: 0
 		right: 0
 		min-height: 100vh
-		background-color: rgba(0,0,0,0.8)
+		background-color: rgba(0,0,0,0.9)
 		flex: 0 0 100%
 		max-width: 100%
 

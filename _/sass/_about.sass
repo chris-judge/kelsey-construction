@@ -11,6 +11,7 @@
 			.image-wrap, h2, h3, .ce-wrap
 				transition: $x-short
 		.flex.rev
+			overflow: hidden
 			.image-wrap
 				opacity: 0
 				transform: translateX(4rem)
@@ -48,8 +49,8 @@
 			height: 56.9rem
 
 	.wheel
-		flex: 0 0 calc(100%/3)
-		max-width: calc(100%/3)
+		flex: 0 0 33.333333333%
+		max-width: 33.333333333%
 		height: 100%
 		padding: 2rem 8.5rem
 
@@ -167,12 +168,12 @@
 
 	.fade.top
 		top: 0
-		background: linear-gradient(white, white, white, white, transparent)
+		background: linear-gradient(white, white, white, white, rgba(255,255,255,0.0))
 
 	.fade.bot
 		bottom: 0
 		height: 5.8rem
-		background: linear-gradient(transparent, white, white, white, white)
+		background: linear-gradient(rgba(255,255,255,0.0), white, white, white, white)
 
 
 	.arrow

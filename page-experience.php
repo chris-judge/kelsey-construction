@@ -76,6 +76,7 @@
 					<?php while( have_rows('categories') ): the_row(); ?>
 						<?php $categories = get_sub_field('category'); ?>
 						<ul class="cat-menu">
+							<li class="btn sm hide active" data-cat="All">All</li>
 						<?php foreach ($categories as $category): ?>
 							<?php if(get_cat_name($category) == 'Grocery'): ?>
 								<?php $grocery_cat = $category; ?>

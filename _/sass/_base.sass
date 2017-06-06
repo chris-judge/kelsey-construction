@@ -155,8 +155,8 @@ body.unlock, html.unlock
 
 	.content-wrap
 		background-color: rgba(0,0,0,0.6)
-		flex: 0 0 calc(100% - 16rem)
-		max-width: calc(100% - 16rem)
+		flex: 0 0 100%
+		max-width: 100%
 
 	.image-wrap
 		width: 100%
@@ -205,14 +205,19 @@ body.unlock, html.unlock
 	.side
 		flex: 0 0 8rem
 		max-width: 8rem
-		height: 100%
 		font-size: 12rem
-		padding: 15rem 0
+		padding: 15rem 1rem
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
 		transition: $x-short
 		cursor: pointer
 		&:hover
 			color: $orange
+	.side.prev
+		left: 0
 	.side.next
+		right: 0
 		text-align: right
 
 	.side.hide
@@ -221,12 +226,14 @@ body.unlock, html.unlock
 
 .light-box-wrap
 	max-width: 140rem
-	margin: auto
+	padding: 0 8rem
+	margin: 0
 	width: 100%
 	display: flex
 	align-items: center
 	justify-content: center
 	flex-wrap: wrap
+	position: relative
 
 .light-box-nav
 	display: flex
@@ -235,11 +242,29 @@ body.unlock, html.unlock
 	flex: 0 0 100%
 	max-width: 100%
 	margin-bottom: 1.5rem
-	padding: 0 7.5rem
 
 .light-box.active
 	opacity: 1
 	pointer-events: auto
+
+
+
+.error404 section
+	text-align: center
+	min-height: calc(100vh - 12.5rem)
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-wrap: wrap
+	h2
+		font-size: 4.8rem
+	p
+		font-size: 2.4rem
+	article
+		flex: 0 0 100%
+		max-width: 100%
+		padding: 125px 15px
+
 
 @media screen and (max-width: 1400px)
 	.light-box .image-wrap
@@ -283,6 +308,9 @@ body.unlock, html.unlock
 	.light-box-nav
 		padding: 0
 
+	.light-box-wrap
+		padding: 0
+
 @media screen and (max-width: 512px)
 	h1
 		font-size: 4.4rem
@@ -291,7 +319,7 @@ body.unlock, html.unlock
 
 @media screen and (max-width: 485px)
 	.light-box
-		padding: 4rem 1.5rem
+		padding: 4rem 1.5rem 6rem
 	.light-box-nav
 		margin-bottom: 0
 		margin-top: 1.5rem
@@ -311,7 +339,8 @@ body.unlock, html.unlock
 
 	.light-box .description-wrap
 		padding: 2rem 0
-
+	.light-box
+		align-items: flex-start
 @media screen and (max-width: 475px)
 	body
 		font-size: 1.6rem

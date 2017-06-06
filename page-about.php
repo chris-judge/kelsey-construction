@@ -39,7 +39,6 @@
 						</div>
 					</div>
 					<div class="image-wrap tac por">
-						<div class="box-shadow"></div>
 						<?php $logo_id = get_sub_field('image'); ?>
 						<?php echo wp_get_attachment_image($logo_id['id'], 'full'); ?>
 					</div>
